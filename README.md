@@ -15,8 +15,8 @@ The mFILTER methodology consists of six QC steps. Based on their outcomes, indiv
 ## Table of Contents
 
 - [Installation](#installation)
-  - [A: From GitHub](#a-from-github)
-  - [B: From a local file](#b-from-a-local-file)
+  - [From GitHub](#a-from-github)
+  - [From a local file](#b-from-a-local-file)
   - [Loading the package](#loading-the-package)
 - [Functionalities](#functionalities)
   - [Quality flags](#quality-flags)
