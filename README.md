@@ -19,6 +19,7 @@ The mFILTER methodology consists of six QC steps. Based on their outcomes, indiv
   - [B: From a local file](#b-from-a-local-file)
   - [Loading the package](#loading-the-package)
 - [Functionalities](#functionalities)
+  - [Quality flags](#quality-flags)
 - [Dependencies](#dependencies)
 - [Data format](#data-format)
   - [Input](#input)
@@ -59,16 +60,29 @@ library(mFILTER)
 
 ## Functionalities
 
-The QC tests, their quality flags and their main helper functions are listed below.
+The QC tests and their main helper functions are listed below.
 
-| Test | Description | Quality Flag | Function | Main helper functions |
-|---|---|---|---|---|
-| Location | Flags values that exceed realistic movement speed limits | `0`: invalid <br> `1`: valid | `location_qctest()` | |
-| Range Validity | Flags values outside physically realistic limits | `0`: out of range <br> `1`: within range | `range_validity_qctest()` | |
-| Constant Value | Flags persistent (constant) values | `0`: insufficient data <br> `1`: constant <br> `2`: not constant | `constant_value_qctest()` | |
-| Spatial Correlation | Flags values that are not correlated with those of neighboring sensors or reference stations | `0`: insufficient data <br> `1`: isolated site <br> `2`: not correlated with the neighbors <br> `3`: correlated with the neighbors | `spatial_correlation_qctest()` | `expected_correlation()` |
-| Spatial Similarity | Flags values that are not similar to those of the closest reference stations | `0`: insufficient data <br> `1`: isolated site <br> `2`: not similar to the nearby reference stations <br> `3`: similar to the nearby reference stations | `spatial_similarity_qctest()` | `find_neighbors()` <br> `spatial_similarity()` |
-| Chain Similarity | Flags values that are not similar to those of (a) the closest reference stations or (b) already validated sensors | `0`: insufficient data <br> `1`: isolated site <br> `2`: not similar to the nearby higher-accuracy nodes <br> `3`: similar to the nearby validated sensors (indirect evaluation) <br> `4`: similar to the nearby reference stations (direct evaluation) | `chain_similarity_qctest()` | `find_neighbors()` <br> `spatial_similarity()` |
+| Test | Description | Function | Main helper functions |
+|---|---|---|---|
+| Location | Flags values that exceed realistic movement speed limits | `location_qctest()` | |
+| Range Validity | Flags values outside physically realistic limits | `range_validity_qctest()` | |
+| Constant Value | Flags persistent (constant) values | `constant_value_qctest()` | |
+| Spatial Correlation | Flags values that are not correlated with those of neighboring sensors or reference stations | `spatial_correlation_qctest()` | `expected_correlation()` |
+| Spatial Similarity | Flags values that are not similar to those of the closest reference stations | `spatial_similarity_qctest()` | `find_neighbors()` <br> `spatial_similarity()` |
+| Chain Similarity | Flags values that are not similar to those of (a) the closest reference stations or (b) already validated sensors | `chain_similarity_qctest()` | `find_neighbors()` <br> `spatial_similarity()` |
+  
+### Quality flags
+  
+Each test adds a flag column to the dataset. The flag values that mark a valid measurement are shown in **bold**.
+
+| Test | Flag column | Description |
+|---|---|---|
+| Location | `flag_location` | `0` invalid · **`1` valid** |
+| Range Validity | `flag_range` | `0` out of range · **`1` within range** |
+| Constant Value | `flag_constant_value` | `0` insufficient data · `1` constant · **`2` not constant** |
+| Spatial Correlation | `flag_correlation` | `0` insufficient data · `1` isolated site · `2` not correlated · **`3` correlated** |
+| Spatial Similarity | `flag_similarity` | `0` insufficient data · `1` isolated site · `2` not similar · **`3` similar to the reference stations** |
+| Chain Similarity | `flag_chain_similarity` | `0` insufficient data · `1` isolated site · `2` not similar · **`3` similar to validated sensors** · **`4` similar to the reference stations** |
 
 The full QC procedure, with all six tests applied in sequence, can be run with a single call to `run_mFILTER_QC()`.
 
