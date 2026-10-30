@@ -80,7 +80,7 @@ Each test adds a flag column to the dataset. The flag values that mark a valid m
 | Location | `flag_location` | `0` invalid <br> **`1` valid** |
 | Range Validity | `flag_range` | `0` out of range <br> **`1` within range** |
 | Constant Value | `flag_constant_value` | `0` insufficient data <br> `1` constant <br> **`2` not constant** |
-| Spatial Correlation | `flag_correlation` | `0` insufficient data <br> `1` isolated site <br> `2` not correlated · **`3` correlated** |
+| Spatial Correlation | `flag_correlation` | `0` insufficient data <br> `1` isolated site <br> `2` not correlated with neighbors <vr> **`3` correlated with neighbors ** |
 | Spatial Similarity | `flag_similarity` | `0` insufficient data <br> `1` isolated site <br> `2` not similar <br> **`3` similar to the reference stations** |
 | Chain Similarity | `flag_chain_similarity` | `0` insufficient data <br> `1` isolated site <br> `2` not similar <br> **`3` similar to validated sensors** <br> **`4` similar to the reference stations** |
 
