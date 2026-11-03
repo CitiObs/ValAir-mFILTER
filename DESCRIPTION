@@ -1,0 +1,30 @@
+Package: mFILTER
+Type: Package
+Title: Framework for Improving Low-cost Technology Effectiveness and
+    Reliability for mobile sensors and wearables (mFILTER)
+Version: 0.1.0
+Authors@R:
+    person("Vasileios", "Salamalikis", , "vsal@nilu.no", role = c("aut", "cre"))
+Description: Functions for quality control of environmental data measured by mobile sensors and wearables.
+Depends:
+    R (>= 3.5)
+Imports:
+    stats,
+    utils,
+    tibble,
+    dplyr,
+    tidyr,
+    tidyselect,
+    magrittr,
+    rlang,
+    sf,
+    runner,
+    slider,
+    lubridate,
+    rlist
+Suggests:
+    ggplot2,
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+Config/roxygen2/version: 8.0.0
+License: GPL (>= 3)
